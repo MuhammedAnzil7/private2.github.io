@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year End Wish ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Playfair Display',serif;
+  background:#000000;
+  color:#f5f5f5;
+  overflow-x:hidden;
+}
+
+/* Sections */
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+}
+
+/* Headings */
+h1,h2{
+  font-family:'Great Vibes','Playfair Display',serif;
+  font-weight:600;
+}
+
+h1{
+  font-size:2.8rem;
+  margin-bottom:10px;
+}
+
+p{
+  font-size:1.05rem;
+  line-height:1.8;
+  opacity:0.95;
+}
+
+/* Fade animation */
+.fade{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all 1s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* Glass card */
+.card{
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+  border-radius:20px;
+  padding:40px 25px;
+  max-width:700px;
+  box-shadow:0 20px 40px rgba(0,0,0,.35);
+}
+
+/* Portrait image */
+.portrait{
+  width:230px;
+  max-width:85%;
+  margin:10px auto 0;
+  display:block;
+  border-radius:50%;
+  box-shadow:0 20px 40px rgba(0,0,0,0.35);
+  filter:brightness(1.05) contrast(1.05);
+  animation:floatPic 4s ease-in-out infinite;
+  /*mask-image:radial-gradient(square, black 65%, transparent 100%);*/
+}
+
+@keyframes floatPic{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,5fr));
+  gap:86px;
+  margin-top:80px;
+}
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 10px 20px rgba(0,0,0,0.08);
+  transition:transform .25s ease;
+}
+.gallery img:hover{transform:translateY(-6px) scale(1.02)}
+
+/* Hearts animation */
+.hearts{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  overflow:hidden;
+  z-index:0;
+}
+.heart{
+  position:absolute;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:.7;
+}
+
+@keyframes float{
+  from{transform:translateY(0)}
+  to{transform:translateY(-110vh)}
+}
+
+/* Footer */
+.footer{
+  font-size:.9rem;
+  opacity:.8;
+}
+
+/* Mobile tweaks */
+@media (max-width:480px){
+  h1{font-size:2.2rem;}
+  h2{font-size:1.6rem;}
+  .card{padding:30px 20px;}
+  .portrait{width:180px;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<!-- HERO -->
+<section>
+  <div class="fade">
+    <h1>Goodbye 2025 ❤️</h1>
+    <p>This year was beautiful because of you</p>
+    <img src="her.png" class="portrait" alt="Special memory">
+  </div>
+</section>
+
+<!-- MESSAGE -->
+<section>
+  <div class="card fade">
+    <h2>Dear Fathi 💌</h2>
+    <p>
+      Thank you for every smile, every late-night talk,
+      and every small moment that made this year unforgettable.
+      You turned ordinary days into memories I’ll always keep.
+    </p>
+  </div>
+</section>
+
+<!-- MEMORIES -->
+<section>
+  <div class="card fade">
+    <h2>What I Loved Most ✨</h2>
+    <p>
+      Your care 🤍 <br>
+      Your patience 🌙 <br>
+      Your laughter 😄 <br>
+      And the way you made everything feel right 💫
+    </p>
+    <div class="gallery" aria-label="memories gallery">
+      <div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL WISH -->
+<section>
+  <div class="card fade">
+    <h2>One Last Wish 🌸</h2>
+    <p>
+      As this year ends, I don’t wish for anything fancy.
+      I just wish that the next year…
+      and every year after that…
+      is with you ❤️
+    </p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section>
+  <div class="fade footer">
+    Made with love, just for you 💖
+  </div>
+  <br>
+  </section><hr>
+  <div>
+    <center>© Muhammad Anzil</center>
+  </div>
+</section>
+
+<script>
+/* Fade on scroll */
+const fades=document.querySelectorAll(".fade");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
+    }
+  });
+},{threshold:0.3});
+fades.forEach(f=>observer.observe(f));
+
+/* Floating hearts */
+const hearts=document.querySelector(".hearts");
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerText="❤️";
+  h.style.left=Math.random()*100+"vw";
+  h.style.animationDuration=4+Math.random()*3+"s";
+  hearts.appendChild(h);
+  setTimeout(()=>h.remove(),7000);
+},500);
+</script>
+
+</body>
+</html>
